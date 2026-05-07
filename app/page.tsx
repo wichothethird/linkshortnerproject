@@ -58,7 +58,7 @@ export default async function Home() {
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <SignInButton mode="modal">
-              <Button size="lg" className="bg-green-600 text-white hover:bg-green-700">
+              <Button size="lg">
                 Sign in to get started
               </Button>
             </SignInButton>
@@ -71,6 +71,7 @@ export default async function Home() {
         </div>
 
         <section id="features" className="mt-12 grid gap-4 sm:grid-cols-2">
+          <h2 className="sr-only">Key features</h2>
           {features.map(({ icon: Icon, title, description }) => (
             <div key={title} className="rounded-xl border border-border bg-card p-5">
               <Icon className="mb-3 size-5 text-muted-foreground" />
