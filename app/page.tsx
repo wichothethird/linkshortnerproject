@@ -53,7 +53,7 @@ export default async function Home() {
             Shorten links, track results, and share smarter.
           </h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
-            LinkShortner helps teams create branded short links and follow
+            LinkShortener helps teams create branded short links and follow
             performance in one place.
           </p>
           <div className="flex flex-wrap items-center gap-3">
@@ -62,15 +62,15 @@ export default async function Home() {
                 Sign in to get started
               </Button>
             </SignInButton>
-            <SignInButton mode="modal">
-              <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" asChild>
+              <a href="#features">
                 Explore features
-              </Button>
-            </SignInButton>
+              </a>
+            </Button>
           </div>
         </div>
 
-        <section className="mt-12 grid gap-4 sm:grid-cols-2">
+        <section id="features" className="mt-12 grid gap-4 sm:grid-cols-2">
           {features.map(({ icon: Icon, title, description }) => (
             <div key={title} className="rounded-xl border border-border bg-card p-5">
               <Icon className="mb-3 size-5 text-muted-foreground" />
