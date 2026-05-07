@@ -70,7 +70,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <section id="features" className="mt-12 grid gap-4 sm:grid-cols-2">
+        <section id="features" className="mt-16 grid gap-4 sm:grid-cols-2 md:mt-24">
           <h2 className="sr-only">Key features</h2>
           {features.map(({ icon: Icon, title, description }) => (
             <div key={title} className="rounded-xl border border-border bg-card p-5">
