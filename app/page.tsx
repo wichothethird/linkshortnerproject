@@ -3,50 +3,82 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { SignInButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { BarChart3, Link2, ShieldCheck, Zap } from "lucide-react";
 
 export default async function Home() {
   const { userId } = await auth();
   if (userId) redirect("/dashboard");
+
+  const features = [
+    {
+      icon: Link2,
+      title: "Short links in seconds",
+      description:
+        "Create clean, memorable short URLs for campaigns, social posts, and shared documents.",
+    },
+    {
+      icon: BarChart3,
+      title: "Track performance",
+      description:
+        "Monitor clicks and engagement so you can understand what links are working best.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Reliable and secure",
+      description:
+        "Built for dependable redirects with a focus on keeping your links safe and available.",
+    },
+    {
+      icon: Zap,
+      title: "Fast user experience",
+      description:
+        "Lightweight pages and quick redirects keep visitors moving without delays.",
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="min-h-screen bg-background text-foreground">
+      <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-6 py-16 md:px-10">
         <Image
-          className="dark:invert"
+          className="mb-10 dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={100}
           height={20}
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+
+        <div className="space-y-6">
+          <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
+            Shorten links, track results, and share smarter.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-2xl text-lg text-muted-foreground">
+            LinkShortner helps teams create branded short links and follow
+            performance in one place.
           </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <SignInButton mode="modal">
+              <Button size="lg" className="bg-green-600 text-white hover:bg-green-700">
+                Sign in to get started
+              </Button>
+            </SignInButton>
+            <SignInButton mode="modal">
+              <Button size="lg" variant="outline">
+                Explore features
+              </Button>
+            </SignInButton>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <SignInButton mode="modal">
-            <Button className="bg-green-600 hover:bg-green-700 text-white">
-              Sign in
-            </Button>
-          </SignInButton>
-        </div>
+
+        <section className="mt-12 grid gap-4 sm:grid-cols-2">
+          {features.map(({ icon: Icon, title, description }) => (
+            <div key={title} className="rounded-xl border border-border bg-card p-5">
+              <Icon className="mb-3 size-5 text-muted-foreground" />
+              <h2 className="text-base font-semibold">{title}</h2>
+              <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+            </div>
+          ))}
+        </section>
       </main>
     </div>
   );
