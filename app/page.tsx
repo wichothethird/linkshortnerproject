@@ -58,7 +58,7 @@ export default async function Home() {
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <SignInButton mode="modal">
-              <Button size="lg">
+              <Button size="lg" aria-label="Sign in to start creating and managing short links">
                 Sign in to get started
               </Button>
             </SignInButton>
